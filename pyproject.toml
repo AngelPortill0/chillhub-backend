@@ -1,0 +1,79 @@
+[tool.poetry]
+name = "chillhub"
+version = "1.0.0"
+description = "Backend de chillhub"
+authors = ["Angel Portillo <angelportilloparra@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Django = "5.0.4"
+channels = "^4.1.0"
+django-environ = "^0.11.2"
+psycopg = "^3.1.18"
+psycopg2 = "^2.9.9"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.5"
+pre-commit = "^3.7.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".git",
+    ".git-rewrite",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "site-packages",
+    "venv",
+    "pyproject.toml"
+]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+target-version = "py312"
+
+[tool.ruff.lint]
+# F: Enable Pyflakes
+# E4: Import - E7: Statement - E9: Runtime
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
