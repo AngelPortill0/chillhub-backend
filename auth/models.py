@@ -1,3 +1,4 @@
+import unicodedata
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
@@ -29,3 +30,16 @@ class User(AbstractBaseUser):
         db_table = "user"
         verbose_name = "user"
         verbose_name_plural = "users"
+
+    @classmethod
+    def normalize_username(cls, username) -> str:
+        """
+        Normalize the username by unicode form NFKC and lowercasing it
+
+        Args:
+            username (str): the username to be normalized
+
+        Returns:
+            str: the username normalized by unicode form NFKC and lowercase
+        """
+        return unicodedata.normalize("NFKC", username).lower()
