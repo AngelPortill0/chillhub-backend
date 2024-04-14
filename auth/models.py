@@ -1,4 +1,5 @@
 import unicodedata
+
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
@@ -50,6 +51,15 @@ class User(AbstractBaseUser):
 
     @classmethod
     def normalize_email_domain(cls, email) -> str:
+        """
+        Normalize the email by lowercasing domain name
+
+        Args:
+            email (str): the email to be normalized
+
+        Returns:
+            str: the email normalized or empty string
+        """
         unormalized_email = email
         normalized_email = ""
 
