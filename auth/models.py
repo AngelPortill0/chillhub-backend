@@ -32,17 +32,21 @@ class User(AbstractBaseUser):
         verbose_name_plural = "users"
 
     @classmethod
-    def normalize_username(cls, username) -> str:
+    def normalize_name(cls, name, change_to_lower=False) -> str:
         """
-        Normalize the username by unicode form NFKC and lowercasing it
+        Normalize the name by unicode form NFKC and lowercasing it
 
         Args:
-            username (str): the username to be normalized
+            name (str): the name to be normalized
 
         Returns:
-            str: the username normalized by unicode form NFKC and lowercase
+            str: the name normalized by unicode form NFKC and lowercase
         """
-        return unicodedata.normalize("NFKC", username).lower()
+        return (
+            unicodedata.normalize("NFKC", name).lower()
+            if change_to_lower
+            else unicodedata.normalize("NFKC", name)
+        )
 
     @classmethod
     def normalize_email_domain(cls, email) -> str:
