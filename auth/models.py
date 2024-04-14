@@ -31,6 +31,7 @@ class User(AbstractBaseUser):
         db_table = "user"
         verbose_name = "user"
         verbose_name_plural = "users"
+        ordering = ["last_login"]
 
     @classmethod
     def normalize_name(cls, name, change_to_lower=False) -> str:
