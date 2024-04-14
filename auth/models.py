@@ -25,7 +25,7 @@ class User(AbstractBaseUser):
     is_email_verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    last_login = models.DateTimeField(null=True)
+    last_login_at = models.DateTimeField(null=True)
 
     class Meta:
         db_table = "user"
