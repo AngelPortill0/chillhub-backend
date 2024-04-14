@@ -2,7 +2,7 @@ repo: https://github.com/pre-commit/pre-commit-hooks
 rev: v3.2.0
 
 - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
+    rev: v5.13.2
     hooks:
       - id: isort
         name: isort (python)
