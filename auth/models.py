@@ -43,3 +43,14 @@ class User(AbstractBaseUser):
             str: the username normalized by unicode form NFKC and lowercase
         """
         return unicodedata.normalize("NFKC", username).lower()
+
+    @classmethod
+    def normalize_email_domain(cls, email) -> str:
+        unormalized_email = email
+        normalized_email = ""
+
+        if "@" in unormalized_email:
+            email_name, domain_name = unormalized_email.strip.rstrip("@")
+            normalized_email = f"{email_name}@{domain_name.lower()}"
+
+        return normalized_email
