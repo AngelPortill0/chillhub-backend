@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 import environ
 
 env = environ.Env(IS_DEBUG=(bool, False))
@@ -44,6 +45,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+AUTH_USER_MODEL = "chillhub_auth.User"
 
 ROOT_URLCONF = "chillhub.urls"
 
